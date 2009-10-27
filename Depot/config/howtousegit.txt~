@@ -17,8 +17,3 @@ git push 或者git push origin master 提交menu中的所有东西
 然后 git commit -m “提交的东西”
 再git remote add origin git@github,com:jingtian/menu.git
 git push
-
-
-I want to change something in the file!
-Test the file !hehehehhe
-SSSSSSSSS
