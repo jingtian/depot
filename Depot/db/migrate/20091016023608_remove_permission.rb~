@@ -1,0 +1,9 @@
+class RemovePermission < ActiveRecord::Migration
+  def self.up
+  remove_column :permissions ,:update , :add, :delete
+  end
+
+  def self.down
+  add_column :permissions, :update, :add, :delete
+  end
+end

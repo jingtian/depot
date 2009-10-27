@@ -1,0 +1,26 @@
+<h1>Listing permissions</h1>
+
+<table cellpadding="10%">
+  <tr>
+    <th>Authorizable</th>
+    <th>Authorizable type</th>
+    <th>God</th>
+  </tr>
+
+<% @permissions.each do |permission| %>
+  <tr>
+    <td align="center"><%=h permission.authorizable_id %></td>
+    <td align="center"><%=h permission.authorizable_type %></td>
+    <td align="center"><%=h permission.god %></td>
+
+    
+    <td><%= link_to 'Show', permission %></td>
+    <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
+    <td><%= link_to 'Destroy', permission, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New permission', new_permission_path %>

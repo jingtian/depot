@@ -1,0 +1,32 @@
+
+<div class="depot-form">
+  <%= error_messages_for :role %>
+  <fieldset>
+    <legend>Grant the user you choose!</legend>
+    <% form_for :role, :url => { :action => :save_role } do |form| %>
+
+      <p>
+        <%= label :role, :name, "RoleName:" %><br />
+        <%=
+        form.select :name,
+          Role.get_roles,
+          :prompt => "Select a role"
+      %><br />
+     
+      <% Role.get_role_list do |r| %>
+        <input type="checkbox" name="rolename" value="<%= r.name  %>"/><%= r.name  %><br />
+      <% end %>
+      </p>
+
+      <input type="hidden" value="<%= params[:id] %>" name="id" />
+
+      <p>
+        <%= label :role, :description, "Description:" %><br />
+        <%= form.text_area :description, :rows => 3, :cols => 25 %>
+      </p>
+
+      <%= submit_tag "Grant user" , :class => "submit" %>
+    <% end %>
+  </fieldset>
+</div>
+

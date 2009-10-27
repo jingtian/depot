@@ -1,0 +1,31 @@
+<h1>Listing users</h1>
+
+<div>
+  We have <%= User.count %> buddies！<br />
+  And we have <%= Order.count %> orders!
+</div>
+
+<table  cellpadding="5%">
+  <tr>
+    <th>Name</th>
+    <th>show</th>
+    <th>edit</th>
+    <th>delete</th>
+    <th>grant</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td align="center"><%=h user.name %></td>
+    <td align="center"><%= link_to 'Show', user %></td>
+    <td align="center"><%= link_to 'Edit', edit_user_path(user) %></td>
+    
+    <td align="center"><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= button_to "Grant role", :action => :grant_role, :id => user.id %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user', new_user_path %>

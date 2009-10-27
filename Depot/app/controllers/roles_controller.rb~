@@ -1,0 +1,35 @@
+class RolesController < ApplicationController
+
+  def index
+    @roles = Role.find(:all, :order => :name)
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.xml  { render :xml => @roles }
+#    end
+  end
+
+  def edit
+    get_role_message
+  end
+
+  
+  def show
+    get_role_message
+  end
+
+  def update
+    #@role = Role.find(params[:id]) #get the role you want to update
+    get_role_message
+
+    if @role.update_attributes(params[:role]) #update_attribute method :very useful!
+      flash[:notice] = "Role #{params[:name]} updated successfully!"
+      redirect_to :action => :index
+    end
+  end
+
+  # TODO Comment
+  def get_role_message
+    @role =Role.find(params[:id])
+  end
+
+end
